@@ -14,7 +14,7 @@ This intallation has completed integration between prometheus and grafana.
 ```kubectl get secret my-kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo``` 
 admin/prom-operator
 
-- Access to graphana  
+- Access to grafana  
 ```kubectl port-forward svc/my-kube-prometheus-stack-grafana 3000:80```  
 http://localhost:3000/
 http://localhost:3000/datasources/edit/prometheus/dashboards (prometheus dashboards)
