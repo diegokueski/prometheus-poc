@@ -3,9 +3,6 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
-  selector:
-    matchLabels: null
-  # app: nginx
   replicas: 1
   template:
     metadata:
@@ -21,22 +18,9 @@ spec:
           imagePullPolicy: Never #Is madatoy to use local docker image
           ports:
             - containerPort: 80
-          # volumeMounts:
-          #   - name: nginx-config
-          #     mountPath: /etc/nginx/conf.d/default.conf
-          #     subPath: nginx.conf
         - name: nginx-exporter
           image: 'nginx/nginx-prometheus-exporter:0.10.0'
           args:
-            - '-nginx.scrape-uri=http://localhost/nginx_status'
-          # resources:
-          #   limits:
-          #     memory: 128Mi
-          #     cpu: 500m
+            - '-nginx.scrape-uri=http://localhost/nginx_status' # url of the container nginx
           ports:
             - containerPort: 9113
-      # volumes:
-      #   - configMap:
-      #       defaultMode: 420
-      #       name: nginx-config
-      #     name: nginx-config

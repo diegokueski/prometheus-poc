@@ -3,17 +3,13 @@ kind: ServiceMonitor
 metadata:
   name: nginx-servicemonitor
   # Change this to the namespace the Prometheus instance is running in
-  namespace: default
-  annotations:
-    meta.helm.sh/release-name: my-kube-prometheus-stack
-    meta.helm.sh/release-namespace: default
+  # annotations:
+  #   meta.helm.sh/release-name: my-kube-prometheus-stack
+  #   meta.helm.sh/release-namespace: default
   labels:
     app: nginx
     release: my-kube-prometheus-stack
 spec:
-  # selector:
-  #   matchLabels:
-  #     app: nginx # target nginx service
   endpoints:
     - port: metrics
       interval: 15s
@@ -21,4 +17,3 @@ spec:
   selector:
     matchLabels:
       app: nginx
-      #release: my-kube-prometheus-stack
