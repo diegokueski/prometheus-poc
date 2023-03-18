@@ -1,3 +1,5 @@
 Flask
 opentelemetry-distro
 requests
+opentelemetry-exporter-prometheus
+opentelemetry-exporter-otlp-proto-grpc
