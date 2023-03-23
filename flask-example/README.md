@@ -3,11 +3,22 @@
 ## Run local using prometheus exporter
 
 ´´´
-flaks run
+flask run
 ´´´
 http://127.0.0.1:5000/rolldice
 http://127.0.0.1:5000/rolldicehistogram
 http://localhost:8000/metrics
+
+## Docker
+´´´
+docker build -t flask-example:latest .
+docker run -p 5000:5000 -p  8000:8000 flask-example:latest
+
+flask --app /usr/app/app.py run  &
+
+http://localhost:5000/rolldice
+http://localhost:8000/metrics
+´´´
 
 ## Local setup
 ```
