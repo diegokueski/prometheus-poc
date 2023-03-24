@@ -12,8 +12,9 @@ http://localhost:8000/metrics
 ## Docker
 ´´´
 docker build -t flask-example:latest .
-docker run -p 5000:5000 -p  8000:8000 flask-example:latest
+docker run -p  8000:8000 -p 5001:5001 flask-example:latest
 
+flask run --port=5001
 flask --app /usr/app/app.py run  &
 
 http://localhost:5000/rolldice

@@ -18,8 +18,8 @@ RUN addgroup -S appuser && adduser -S appuser -G appuser
 COPY --chown=appuser:appuser . /usr/app/
 RUN chmod u+x /usr/app/entrypoint.sh
 
-EXPOSE 5000
 EXPOSE 8000
+EXPOSE 5000
 
 USER appuser
 ENTRYPOINT ["/usr/app/entrypoint.sh"]

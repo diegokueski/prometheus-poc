@@ -5,10 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
-opentelemetry-distro = "*"
 requests = "*"
 opentelemetry-exporter-prometheus = "*"
 opentelemetry-exporter-otlp-proto-grpc = "*"
+jsonify = "*"
 
 [dev-packages]
 

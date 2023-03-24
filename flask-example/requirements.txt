@@ -2,3 +2,4 @@ Flask
 requests
 opentelemetry-exporter-prometheus
 opentelemetry-exporter-otlp-proto-grpc
+jsonify

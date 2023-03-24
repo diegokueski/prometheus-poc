@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Run the service
-flask --app /usr/app/app.py run 
+python3 /usr/app/app.py
