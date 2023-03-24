@@ -9,6 +9,25 @@ http://127.0.0.1:5000/rolldice
 http://127.0.0.1:5000/rolldicehistogram
 http://localhost:8000/metrics
 
+
+## Run in k8s
+
++ Start minikube cluster
+```
+minikube start -p prometheus-poc
+```
+
++ Deploy to k8s
+````
+kubectl apply -k .k8s
+```
+
++ Test
+```
+kubectl run mycurlpod --image=curlimages/curl -i --rm --tty -- sh
+curl http://flask-example.flask-example.svc.cluster.local:5000/health
+```
+
 ## Docker
 ´´´
 docker build -t flask-example:latest .

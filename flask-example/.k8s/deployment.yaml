@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-example
+  template:
+    metadata:
+      labels:
+        app: flask-example
+    spec:
+      containers:
+        - name: flask-example
+          image: flask-example
+          imagePullPolicy: Never #Is madatoy to use local docker image
+          ports:
+            - name: app-port
+              containerPort: 5000
+          startupProbe:
+            httpGet:
+              path: /health
+              port: app-port
+            failureThreshold: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: app-port
+            initialDelaySeconds: 10
+            periodSeconds: 30 
+            timeoutSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: app-port
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 20

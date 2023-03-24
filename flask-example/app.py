@@ -59,5 +59,9 @@ if __name__ == '__main__':
         counter.add(1, {"environment": "staging"})
         return res
     
+    @app.route('/health')
+    def health():
+        return {'result': 'healthy'}
+    
     #Prometheus client (http_server) requires the debug is turn off
     app.run(debug=False, host='0.0.0.0', port=5000)
