@@ -10,6 +10,6 @@ spec:
     - port: 5000
       name: http
     - port: 8000
-      name: http-metrics
+      name: metrics
   selector:
     app: flask-example

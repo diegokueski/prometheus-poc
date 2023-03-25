@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: flask-example-service-monitor
+  labels:
+    app: flask-example
+    release: my-kube-prometheus-stack
+spec:
+  endpoints:
+    - port: metrics
+      interval: 15s
+      path: /metrics
+  selector:
+    matchLabels:
+      app: flask-example
