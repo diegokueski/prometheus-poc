@@ -15,7 +15,9 @@ This intallation has completed integration between prometheus and grafana.
 admin/prom-operator
 
 - Access to grafana  
-```kubectl port-forward svc/my-kube-prometheus-stack-grafana 3000:80```  
+```
+kubectl port-forward svc/my-kube-prometheus-stack-grafana 3000:80
+```  
 http://localhost:3000/
 http://localhost:3000/datasources/edit/prometheus/dashboards (prometheus dashboards)
 
