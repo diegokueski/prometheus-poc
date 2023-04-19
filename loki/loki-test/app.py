@@ -1,19 +1,20 @@
-import time
 import logging
 from os import getenv
 from flask import Flask
 
 if __name__ == '__main__':
+
     app = Flask(__name__)
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(
+        level=logging.DEBUG, 
+            format='{"timestamp":"%(asctime)s", "level":"%(levelname)s", "logger":"%(module)s", "message":"%(message)s"}'
+    )
 
     @app.route('/info')
     def info():
-        logging.warning('Watch out!')  # will print a message to the console
-        logging.info('I told you so')  # will not print anything
         values = range(3)
         for i in values:
-            app.logger.info('Info log {}'.format(i))
+            app.logger.info('info log {}'.format(i))
 
         return "info!"
 
@@ -32,5 +33,9 @@ if __name__ == '__main__':
             app.logger.error('error log {}'.format(i))
 
         return "error!"
+    
+    @app.route('/health')
+    def health():
+        return {'result': 'healthy'}
 
     app.run(debug=True, host='0.0.0.0')
