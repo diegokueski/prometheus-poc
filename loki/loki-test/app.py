@@ -1,6 +1,7 @@
 import logging
 from os import getenv
 from flask import Flask
+from random import randint
 
 if __name__ == '__main__':
 
@@ -13,8 +14,7 @@ if __name__ == '__main__':
     @app.route('/info')
     def info():
         values = range(3)
-        for i in values:
-            app.logger.info('info log {}'.format(i))
+        app.logger.info('Info log')
 
         return "info!"
 
@@ -22,7 +22,8 @@ if __name__ == '__main__':
     def debug():
         values = range(3)
         for i in values:
-            app.logger.debug('debug log {}'.format(i))
+            random = randint(1, 100)
+            app.logger.debug('{}'.format(random))
 
         return "debug!"
     
@@ -30,7 +31,7 @@ if __name__ == '__main__':
     def error():
         values = range(3)
         for i in values:
-            app.logger.error('error log {}'.format(i))
+            app.logger.error('Error log {}'.format(i))
 
         return "error!"
     
