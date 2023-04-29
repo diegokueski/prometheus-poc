@@ -41,9 +41,25 @@ kubectl logs -n loki-test loki-test-85696c4b57-227dq
 {app="loki-test"} | json | level="DEBUG" | label_format magic_field=level
 ```
 
-## Grafana charts
+## Aggregation queries
 ```
-count_over_time({app="loki-test"}|="ERROR"[5s])
+#Count the logs every 30 seconds
+count_over_time({app="loki-test"} [30s])
+
+#Aggregate the logs by leve every 30 seconds
+sum by (level) (count_over_time({app="loki-test"} | json  [30s]))
+
+#The max/min value of the message field every 30s
+max_over_time({app="loki-test"} |= "DEBUG" | json | unwrap message [30s])
+min_over_time({app="loki-test"} |= "DEBUG" | json | unwrap message [30s])
+
+#Average/Sum the message value every 30 seconds
+avg_over_time({app="loki-test"} |= "DEBUG" | json | unwrap message [30s])
+sum_over_time({app="loki-test"} |= "DEBUG" | json | unwrap message [30s])
+
+#Aggregate by app
+sum by (app) (min_over_time({app="loki-test"} |= "DEBUG" | json | unwrap message [30s]))
+
 
 ```
 
